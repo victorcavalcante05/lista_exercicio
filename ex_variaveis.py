@@ -1,12 +1,10 @@
-# variaveis
-x = 'laerte'
-aula_lista = [1,2,10,20, x]
-# looping
-soma = 0
-for i in aula_lista:
-    print(i)
-    if i == "laerte":
-        soma = soma
+nome = 'victor'
+lista_valores = [1, 2, 10, 20, nome]
+total = 0
+for item in lista_valores:
+    print(item)
+    if item == nome:
+        total = total
     else:
-        soma = soma + i
-    print(soma)
+        total += item
+    print(total)

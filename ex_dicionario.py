@@ -1,96 +1,63 @@
-# 1.	Escreva um programa que percorra uma lista de notas e classifique cada uma das seguintes maneiras:
-# "Reprovado" (nota < 6,0)
-# "Recuperação" (nota >= 6,0 e nota < 7,0)
-# "Aprovado" (nota >= 70, e nota < 9,0)
-# "Aprovado com Menção Honrosa" (nota >= 9,0)
+nota_final = float(input("Informe a nota obtida: "))
 
-nota = float(input("Digite a Nota:"))
-
-if nota < 6:
-    print("Reprovado")
-elif nota >= 6 and nota < 7:
-    print("Recuperacao")
-elif nota >= 7 and nota < 8:
-    print("Aprovado")
-elif nota >=8 and nota < 9:
-    print("Aprovado")
-elif nota >=9 and nota <=10:
-    print("Aprovado com Menção Honrosa")
+if nota_final < 6.0:
+    print("Resultado: Reprovado")
+elif 6.0 <= nota_final < 7.0:
+    print("Resultado: Recuperação")
+elif 7.0 <= nota_final < 8.0:
+    print("Resultado: Aprovado")
+elif 8.0 <= nota_final < 9.0:
+    print("Resultado: Aprovado")
+elif 9.0 <= nota_final <= 10.0:
+    print("Resultado: Aprovado com Distinção")
 else:
-    print("Nota Digitada errada")
+    print("Nota inválida, por favor verifique o valor inserido.")
 
-# 2.	Escreva um programa que percorra uma lista de cores e classifique-as como "Primárias" (vermelho, azul, amarelo)
-    #  ou "Secundárias" (verde, laranja, roxo), ou "Outras".
-cor = input("Digite a cor:")
+input_cor = input("Informe uma cor: ").lower()
 
-# if cor =="vermelho" or cor=="azul" or cor=="amarelo":
-#     print("Primaria")
-# elif cor =="verde" or cor=="laranja" or cor=="roxo":
-#     print("Secundaria")
-# else:
-#     print("Outras")
+cores_primarias = ["vermelho", "azul", "amarelo"]
+cores_secundarias = ["verde", "laranja", "roxo"]
 
-lista_primaria = ["vermelho", "azul", "amarelo"]
-lista_secundaria = ["verde", "laranja", "roxo"]
-
-if cor in lista_primaria:
-    print("Primaria")
-elif cor in lista_secundaria:
-    print("Primaria")
+if input_cor in cores_primarias:
+    print("A cor é Primária")
+elif input_cor in cores_secundarias:
+    print("A cor é Secundária")
 else:
-    print("Outras")
+    print("A cor pertence a outro grupo")
 
-#Exercicio 3
-mes = input("Digite o mes:")
-dicionario = {"01": "Janeiro",
-              "02": "Fevereiro",
-              "03": "Março",
-              "04": "Abril",
-              "05": "Maio",
-              "06": "Junho",
-              "07": "Julho",
-              "08": "Agosto",
-              "09": "Setembro",
-              "10": "Outubro",
-              "11": "Novembro",
-              "12": "Dezembro"}
+numero_mes = input("Insira o número do mês (01 a 12): ")
+meses_ano = {
+    "01": "Janeiro",
+    "02": "Fevereiro",
+    "03": "Março",
+    "04": "Abril",
+    "05": "Maio",
+    "06": "Junho",
+    "07": "Julho",
+    "08": "Agosto",
+    "09": "Setembro",
+    "10": "Outubro",
+    "11": "Novembro",
+    "12": "Dezembro"
+}
 
-print(dicionario[mes])
+print(f"O mês é: {meses_ano.get(numero_mes, 'Mês inválido')}")
 
-# Escreva um programa que verifique se o mês e ano 
-# digitado pelo usuário tem 28,29,30 ou 31 dias.
+mes_nome = "Fevereiro"
+ano_atual = 2024
 
-#Entrada
-mes = "Fevereiro"
-ano = 2024
-# Funcao Auxiliar para verificar se no ano é bisexto
-def is_leap_year(year):
-    is_leap = year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
-    return is_leap
+def verifica_bissexto(ano):
+    return ano % 4 == 0 and (ano % 100 != 0 or ano % 400 == 0)
 
-lista_mes_31 = [ 
-    dicionario["01"],
-    dicionario["03"],
-    dicionario["05"],
-    dicionario["07"],
-    dicionario["08"],
-    dicionario["10"],
-    dicionario["12"],
-]
-lista_mes_30 = [ 
-    dicionario["04"],
-    dicionario["06"],
-    dicionario["09"],
-    dicionario["11"],
-]
-if mes in lista_mes_31:
-    print("Mes com 31 dias")
-elif mes in lista_mes_30:
-    print("Mes com 30 dias")
+meses_31_dias = [meses_ano["01"], meses_ano["03"], meses_ano["05"], meses_ano["07"], meses_ano["08"], meses_ano["10"], meses_ano["12"]]
+meses_30_dias = [meses_ano["04"], meses_ano["06"], meses_ano["09"], meses_ano["11"]]
+
+if mes_nome in meses_31_dias:
+    print(f"{mes_nome} tem 31 dias.")
+elif mes_nome in meses_30_dias:
+    print(f"{mes_nome} tem 30 dias.")
 else:
-    if is_leap_year(ano):
-        print("Mes tem 29 dias")
+    if verifica_bissexto(ano_atual):
+        print(f"{mes_nome} tem 29 dias por ser ano bissexto.")
     else:
-        print("Mes tem 28 dias")
-
-
+        print(f"{mes_nome} tem 28 dias.")
